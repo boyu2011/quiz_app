@@ -1,4 +1,20 @@
 QuizApp::Application.routes.draw do
+  get "do_quiz/home"
+  get "do_quiz/index"
+  get "do_quiz/start"
+  post "do_quiz/start"
+  get "do_quiz/question"
+  post "do_quiz/question"
+  get "do_quiz/answer"
+  post "do_quiz/answer"
+  get "do_quiz/end"
+
+  resources :choices
+
+
+  resources :questions
+
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

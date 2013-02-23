@@ -1,0 +1,13 @@
+<h1>Question <%= @question.content %></h1>
+
+<% if @correct %>
+	Correct!
+<% else %>
+	Incorrect.
+<% end %>
+
+<%= form_tag({:controller => "do_quiz", :action => "question"}) do %>
+	<%= submit_tag("Continue", :class => "submit") %>
+<% end %>
+
+	

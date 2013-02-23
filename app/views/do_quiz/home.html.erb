@@ -1,0 +1,14 @@
+<h1>DoQuiz#home</h1>
+<p>Find me in app/views/do_quiz/home.html.erb</p>
+
+<table>
+<% @questions.each do |question| %>
+  <tr>
+    <p><%= question.content %></p>
+	<% question.choices.each do |choice| %>
+		<p><%= choice.content %></p>
+	<% end %>
+  </tr>
+<% end %>
+</table>
+
