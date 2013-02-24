@@ -39,18 +39,19 @@ class ChoicesController < ApplicationController
 
   # POST /choices
   # POST /choices.json
-  def create
-    @choice = Choice.new(params[:choice])
-
-    respond_to do |format|
-      if @choice.save
-        format.html { redirect_to @choice, notice: 'Choice was successfully created.' }
-        format.json { render json: @choice, status: :created, location: @choice }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @choice.errors, status: :unprocessable_entity }
-      end
-    end
+  def create  
+    
+    @question = Question.find(params[:question])
+    content = params[:content]
+    correct = params[:correct] == "1"
+    @choice = Choice.create(:content => content, :correct => correct, :question_id => @question.id)
+   
+    if @choice.save
+      redirect_to question_path(@question), :notice => "New Choice is created successfully."
+    else
+      redirect_to question_path(@question), :notice => "Choice's content can't be empty."
+    end 
+    
   end
 
   # PUT /choices/1
@@ -73,11 +74,9 @@ class ChoicesController < ApplicationController
   # DELETE /choices/1.json
   def destroy
     @choice = Choice.find(params[:id])
+    @question = @choice.question
     @choice.destroy
 
-    respond_to do |format|
-      format.html { redirect_to choices_url }
-      format.json { head :no_content }
-    end
+    redirect_to question_path(@question)
   end
 end

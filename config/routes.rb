@@ -1,4 +1,6 @@
 QuizApp::Application.routes.draw do
+  get "admin_pages/home"
+
   get "do_quiz/home"
   get "do_quiz/index"
   get "do_quiz/start"
@@ -9,9 +11,13 @@ QuizApp::Application.routes.draw do
   post "do_quiz/answer"
   get "do_quiz/end"
 
-  resources :choices
-
   resources :questions
+
+  resources :choices
+  
+  post "choices/destroy"
+  
+
 
   resources :customers
   

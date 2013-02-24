@@ -1,10 +1,34 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <b>Content:</b>
+  <b>Question Content:</b><br/>
   <%= @question.content %>
 </p>
 
+<b>Choices:</b>
+<ul>
+	<% @question.choices.each do |choice| %>
+		<li>
+			<%= choice.content %>
+			<% if choice.correct %> (Correct) <% end %>
+			
+			<%= link_to 'Destroy', choice, method: :delete, data: { confirm: 'Are you sure?' } %>
+		</li>
+	<% end %>
+</ul>
 
-<%= link_to 'Edit', edit_question_path(@question) %> |
+<b>New Choice:</b>
+<%= form_tag({:controller => "choices", :action => "create"}) do %>
+  <%= hidden_field_tag :question, @question.id %>
+  
+  <%= label_tag :content, "Content" %><br />
+  <%= text_field_tag :content %>
+  <br />
+  <%= check_box_tag :correct %>
+  <%= label_tag :correct, "Correct" %>
+  <br />
+  <%= submit_tag "Create" %>
+<% end %>
+<br/>
 <%= link_to 'Back', questions_path %>
+
