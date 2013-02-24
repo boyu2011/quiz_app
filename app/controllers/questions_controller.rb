@@ -1,4 +1,7 @@
 class QuestionsController < ApplicationController
+  
+  before_filter :signed_in_admin
+  
   # GET /questions
   # GET /questions.json
   def index
@@ -79,5 +82,11 @@ class QuestionsController < ApplicationController
       format.html { redirect_to questions_url }
       format.json { head :no_content }
     end
+  end
+  
+  private
+    
+  def signed_in_admin
+    redirect_to signin_url, notice: "Please sign in." unless signed_in?
   end
 end

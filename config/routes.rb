@@ -16,12 +16,16 @@ QuizApp::Application.routes.draw do
   resources :choices
   
   post "choices/destroy"
-  
-
 
   resources :customers
   
   get "customers/show"
+  
+  resources :sessions, only: [:new, :create, :destroy]
+  
+  match '/signin', to: 'sessions#new'
+  
+  match '/signout', to: 'sessions#destroy', via: :delete
   
   # The priority is based upon order of creation:
   # first created -> highest priority.
