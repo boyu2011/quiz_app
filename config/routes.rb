@@ -23,6 +23,8 @@ QuizApp::Application.routes.draw do
   
   get "customers/show"
   
+  post "customers/new"
+  
   resources :sessions, only: [:new, :create, :destroy]
   
   match '/signin', to: 'sessions#new'
