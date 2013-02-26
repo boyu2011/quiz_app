@@ -10,6 +10,8 @@ QuizApp::Application.routes.draw do
   get "do_quiz/answer"
   post "do_quiz/answer"
   get "do_quiz/end"
+  
+  match '/do_quiz', to: 'do_quiz#index'
 
   resources :questions
 

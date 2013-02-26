@@ -1,6 +1,6 @@
 <%= render 'header' %>
 
-<h1>Listing Customers</h1>
+<h4>Listing Customers</h4>
 
 <table>
   <tr>
@@ -10,6 +10,7 @@
     <th>Zip Code</th>
 	<th>Phone Number</th>
 	<th>Quiz Score</th>
+	<th>Created At</th>
   </tr>
 
 <% @customers.each do |customer| %>
@@ -20,10 +21,11 @@
 	<td><%= customer.zip_code %></td>
 	<td><%= customer.phone_number %></td>
 	<td><%= customer.quiz_score %></td>
+	<td><%= customer.created_at %></td>
   </tr>
 <% end %>
 </table>
 
-<br />
+<%= will_paginate %>
 
 <%= link_to "Back to main page", "/admin_pages/home" %>

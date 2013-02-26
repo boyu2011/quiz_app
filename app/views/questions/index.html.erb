@@ -1,6 +1,6 @@
 <%= render 'header' %>
 
-<h1>Listing questions</h1>
+<h4>Listing questions</h4>
 
 <table>
   <tr>
@@ -20,7 +20,7 @@
 <% end %>
 </table>
 
-<br />
+<%= will_paginate %>
 
 <%= link_to 'New Question', new_question_path %><br/><br/>
 

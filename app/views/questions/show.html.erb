@@ -23,14 +23,14 @@
 <%= form_tag({:controller => "choices", :action => "create"}) do %>
   <%= hidden_field_tag :question, @question.id %>
   
-  <%= label_tag :content, "Content" %><br />
+  <%= label_tag :content, "Content" %>
   <%= text_field_tag :content %>
   <br />
-  <%= check_box_tag :correct %>
   <%= label_tag :correct, "Correct" %>
-  <br />
+  <%= check_box_tag :correct %>
+  <br /><br />
   <%= submit_tag "Create" %>
 <% end %>
-<br/>
+
 <%= link_to 'Back', questions_path %>
 
