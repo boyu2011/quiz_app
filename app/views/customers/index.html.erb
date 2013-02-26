@@ -1,0 +1,29 @@
+<%= render 'header' %>
+
+<h1>Listing Customers</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Email</th>
+    <th>Address</th>
+    <th>Zip Code</th>
+	<th>Phone Number</th>
+	<th>Quiz Score</th>
+  </tr>
+
+<% @customers.each do |customer| %>
+  <tr>
+    <td><%= customer.name %></td>
+    <td><%= customer.email %></td>
+	<td><%= customer.address %></td>
+	<td><%= customer.zip_code %></td>
+	<td><%= customer.phone_number %></td>
+	<td><%= customer.quiz_score %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to "Back to main page", "/admin_pages/home" %>
